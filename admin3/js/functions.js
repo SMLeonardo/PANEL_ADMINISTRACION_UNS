@@ -25,26 +25,14 @@ function agregardatos(nombre,apellidos,email,usuario,pass){
 }
 
 ////////////////////NOTICIA//////////////////////////
-function agregarNoticia(descripcion,imagen){
+function llenarModal_Noticia(datos){
 
-	cadena="descripcion=" +descripcion  + 
-			"&imagen=" + imagen ;
- alert(cadena);
-	$.ajax({
-		type:"POST",
-		url:"modelo/agregarNoticia.php",
-		data:cadena,
-		success:function(r){
-			if(r==1){
-				//$('#tabla').load('componentes/tabla.php');
-				 //$('#buscador').load('componentes/buscador.php');
-				alertify.success("agregado con exito :)");
-			}else{
-				alertify.error("Fallo el servidor :(");
-			}
-		}
-	});
-
+	d=datos.split('||');
+	$("#ID").val(d[0]);
+	 $("#descripcion1").val(d[1]);
+	//$("#preview").val(d[2]);
+    //$("#extension").val(d[3]); 
+    
 }
 //////////////////////////////////////////////////////////
 function llenarModal_actualizar(datos){
@@ -91,7 +79,32 @@ function actualizaDatos(){
 	});
 
 }
+/////////////////////////////////ACTUALIZAR NOTICI/////////////////
+function actualizaNoticia(){
+    ID=$('#ID').val();
+	descripcion1=$('#descripcion1').val();
+	cadena= "ID=" + ID +
+			"&descripcion1=" + descripcion1;
+    //alertify.success(cadena);
+	$.ajax({
+		type:"POST",
+		url:"modelo/actualizaNoticia.php",
+		data:cadena,
+		success:function(r){
+		
+			if(r==1){
+				//window.location.replace =("usuarios.php");
 
+				alertify.success("Actualizado con exito :)");
+
+			}else{
+				alertify.error("Fallo el servidor :(");
+			}
+		}
+	});
+
+}
+///////////////////////////////////////////////////////////////////////////////////
 function preguntarSiNo(id){
 	alertify.confirm('Eliminar Datos', '¿Esta seguro de eliminar este registro?', 
 					function(){ eliminarDatos(id) }

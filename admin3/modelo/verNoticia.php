@@ -1,28 +1,25 @@
- <?php
-if(!empty($_GET['NT_id'])){
-    //Credenciales de conexion
-    $Host = 'localhost:3307';
-        $Username = 'root';
-        $Password = '';
-        $dbName = 'web';
-    
-    //Crear conexion mysql
-    $db = new mysqli($Host, $Username, $Password, $dbName);
-    
-    //revisar conexion
-    if($db->connect_error){
-       die("Connection failed: " . $db->connect_error);
-    }
-$solicitud=$db->query("SELECT NT_imagen FROM noticias WHERE NT_id = {$_GET['NT_id']}");
-    
-    if($solicitud->num_rows > 0){
-        $imgDatos = $solicitud->fetch_assoc();
-        
-        //Mostrar Imagen
-        header("Content-type: image/jpg"); 
-        echo $imgDatos['NT_imagen']; 
-    }else{
-        echo 'Imagen no existe...';
-    }
+<?php
+include("../contolador/conexion.php"); //importamos el archivo de conexiÃ³n
+//Funcion para recuperar el mime
+function fObtenerMime($wfParamCadena){//creamos una funciÃ³n que recibira un parametro en este caso la extensiÃ³n del archivo
+    $fsExtension = $wfParamCadena;  
+    if  ($fsExtension =='bmp'){ $mime = 'image/bmp'; }
+    if  ($fsExtension =='gif' ){ $mime ='image/gif' ; }
+    if  ($fsExtension =='jpe' ){ $mime ='image/jpeg' ; }
+    if  ($fsExtension =='jpeg'){ $mime = 'image/jpeg' ; }
+    if  ($fsExtension =='jpg' ){ $mime ='image/jpeg'; }
+    if  ($fsExtension =='png' ){ $mime = 'image/png'; }    
+    return $mime;//en base a su extenxiÃ³n la function retornara un tipo de mime 
 }
-              ?>
+ 
+ 
+    $idImagen = $_GET['id']; //Recuperamos el prametro que contiene el id de la imagen que vamos a consultar.
+    
+    $result = mysqli_query($conexion,"Select * from noticias where NT_id = $idImagen");//Realizamos una consulta a la imagen seleccionada
+    $imagen =  mysqli_fetch_assoc($result);//recuperamos los registros de la consulta
+    $mime = fObtenerMime($imagen['NT_extension']);//Obtenemos el mime del archivo.
+    $contenido = $imagen['NT_imagen'];//Obtenemos el contenido almacenado en el campo Binario.
+    
+    header("Content-type:$mime");//le indicamos al navegador que tipo de informaciÃ³n mostraremos.
+    print $contenido; //Imprimimos el contenido.
+    ?>
