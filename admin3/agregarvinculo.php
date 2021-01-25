@@ -26,7 +26,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>  
   </head>
 
   <body>
@@ -47,8 +48,8 @@
             <li><a href="index.html">Panel de Control</a></li>
             <li><a href="Menus.php">Menus</a></li>
             <li><a href="Slider.php">Sliders</a></li>
-            <li class="active"><a href="Noticias.php">Noticias</a></li>
-            <li><a href="Vinculos.php">Vinculos</a></li>
+            <li><a href="Noticias.php">Noticias</a></li>
+            <li class="active"><a href="Vinculos.php">Vinculos</a></li>
             <li><a href="usuarios.php">Usuarios</a></li>
             <li style="position: absolute;margin-left: 73%;"><a href="plogin.php">Cerrar Sesion</a></li>
           </ul>
@@ -127,44 +128,17 @@
      <div class="col-md-9 text-center">
 
       <div class="panel panel-default">
-          <div class="panel-heading">Ultimas Noticias</div>
+          <div class="panel-heading">Nuevo Vinculo</div>
           <div class="panel-body">
-            <table class="table table-striped table-hover">
-             <?php
-                      include("contolador/conexion.php");
-                      $solicitud="SELECT * FROM noticias";
-                      $resultado=mysqli_query($conexion,$solicitud);
-                      
-              ?>
-                      
-                      <table class='table table-striped table-hover' id='noti'> 
-                      <tr>
-                      <th  style="text-align: center;">Nº</th> 
-                      <th  style="text-align: center;">Imagen</th>
-                      <th  style="text-align: center;">Descripcion</th>
-                      <th></th>
-                      </tr>
-         
-
-   
-
-                  <?php    
-                      while ($fila = mysqli_fetch_array($resultado)) {
-                        $datos=$fila[0]."||".
-                       // $fila[1]."||".
-                        $fila[1]; 
-                        ?>
-                       <tr>
-                        <td><?php echo $fila[0] ?></td>
-                        <td ><img src="modelo/verNoticia.php?id=<?php echo $fila[0] ?>" width="100"></td>
-                        <td ><?php echo $fila[1] ?></td>
-                        <td><button class="btn btn-default" data-toggle="modal" data-target="#actualizarNoticia" onclick="llenarModal_Noticia('<?php echo $datos ?>')" >Editar</button>
-                        <a class="btn btn-danger" onclick="preguntarSiNo('<?php echo $fila[0] ?>')">Borrar </a> </td>
-                        </tr>
-                        <?php 
-                      }
-                      ?>
-                      </table>
+          <form action="agregarimagen.php" method="post" enctype="multipart/form-data">   
+          <label>Imagen :</label><br>
+          <input type="file" name="imagen" required><br>
+          <label>Descripción :</label><br>
+          <input type="text" name="descripcion" required><br><br>
+          
+          <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >ACEPTAR</button>  
+          <button class="btn btn-danger" href="#" >CANCELAR</button>   
+          </form> 
           </div>
         </div>
      </div> 
@@ -192,22 +166,9 @@
                 </div>-->
                  <div class="form-group">
                     <label>Informacion de la Pagina</label>
-                    <textarea name="editor1" class="form-control"rows="3" placeholder="Informacion de la pagina"> </textarea>
+                    
                 </div>
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" name="">Publicado
-                  </label>
-                  
-                </div>
-                <div class="form-group">
-                    <label>Palabras clave</label>
-                    <input type="text" class="form-control" placeholder="Agregar algunas palabras">
-                </div>
-                <div class="form-group">
-                    <label>Meta descripcion</label>
-                    <input type="text" class="form-control" placeholder="Agregar una metadescripcion...">
-                </div>
+                
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -270,14 +231,14 @@
           </div>
         </div>
 
-<!-----------------------------------------CREAR NOTICIA------------------------------------------->
-<div class="modal fade" id="modalNoticia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-----------------------------------------CREAR VINCULOS------------------------------------------->
+<div class="modal fade" id="modalVinculos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <form class="form-horizontal" name="MiForm" id="MiForm" method="POST" action="modelo/agregarNoticia.php" enctype="multipart/form-data">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Registro de Noticia</h4>
+                  <h4 class="modal-title" id="myModalLabel">CREAR VINCULOS</h4>
                 </div>
                 <div class="modal-body text-center">
                  
@@ -286,67 +247,17 @@
                           
                           
                           <div class="col-sm-12" >
-                            <input type="file" class="form-control" name="image" id="file" multiple>
-                            <hr>
-                            <div  class="form-group" id="preview" ></div>
+                            <input type="" name="" class="form-control">
                           </div>
                             
                                  
                              
                         </div>
-                        <div class="form-group text-center">
-                          <label  class="col-sm-2 control-label">Descripcion</label>
-                          <div class="col-sm-12">
-                            <textarea  class="form-control" name="descripcion" id="descripcion" rows="5" cols="50"></textarea >
-                          </div>
-                        </div>
+                        
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   <button  name="submit" class="btn btn-primary" >Registrar</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
-<!-----------------------------------------ACTUALIZAR NOTICIA------------------------------------------->
-<div class="modal fade" id="actualizarNoticia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <form class="form-horizontal" name="MiForm" id="MiForm">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Registro de Noticia</h4>
-                </div>
-                <div class="modal-body text-center">
-                 
-                        
-                        <div class="form-group text-center">
-                          
-                          <div class="form-group">
-                      <input type="text" hidden="" id="ID" name="ID">
-                      </div>
-
-                          <!--<div class="col-sm-12" >
-                            <input type="file" class="form-control" name="image" id="file" multiple>
-                            <hr>
-                            <div  class="form-group" id="preview" ></div>
-                          </div> 
-                       
-                        </div>-->
-                        <div class="form-group text-center">
-                          <label  class="col-sm-2 control-label">Descripcion</label><br>
-                          <div class="col-sm-12 text-center">
-                            <textarea  class="form-control" name="descripcion1" id="descripcion1" rows="5" cols="50"></textarea >
-                          </div>
-                        </div>
-                      
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  
-                  <button type="button" id="actualizanoticia" class="btn btn-primary" data-dismiss="modal">Guardar Cambios</button>
                 </div>
               </form>
             </div>
@@ -369,38 +280,11 @@ CKEDITOR.replace( 'editor1', {
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 
--->
+
    
 
     <script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-3.2.1.min.js"></script>  
-
-<script type="text/javascript">
-
-  /*function ver_id() {
-    if (!document.getElementsByTagName || !document.createTextNode) return;
-    var rows = document.getElementById('noti').getElementsByTagName('tr');
-    for (i = 0; i < rows.length; i++) {
-        rows[i].onclick = function() {
-    var result = this.getElementsByTagName('td')[0].innerHTML;
-            document.getElementById("ID").value = result;
-            //window.locationf="Noticias.php?result";
-            
-        }
-    }
-}*/
-
-
-  d=datos.split('||');
-  $("#ID").val(d[0]);
-  $("#nombre").val(d[1]);
-  $("#apellidos").val(d[2]);
-    $("#email").val(d[5]);
-    $("#usuario").val(d[3]);
-    $("#pass").val(d[4]);
-  
-  
-</script>
+<script src="js/jquery-3.2.1.min.js"></script>  -->
   </body>
 </html>
 
@@ -423,9 +307,13 @@ CKEDITOR.replace( 'editor1', {
 <script type="text/javascript">
         
        $(document).ready(function(){
-
-        $('#actualizanoticia').click(function(){
-          actualizaNoticia();
+        $('#agregarNoticia').click(function(){
+          descripcion=$('#descripcion').val(); 
+          imagen=$('#file').val();
+          //var filename = document.getElementById('file').files[0].name;
+    
+    alert(files);
+            agregarNoticia(descripcion,files);
         });
 
     });

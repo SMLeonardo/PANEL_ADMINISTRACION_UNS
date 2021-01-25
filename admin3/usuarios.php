@@ -14,21 +14,12 @@
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <link rel="stylesheet" type="text/css" href="js/alertifyjs/css/alertify.css">
     <link rel="stylesheet" type="text/css" href="js/alertifyjs/css/themes/default.css">
+
     
-      
     <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
     <script src="js/select2/js/select2.js"></script>
     <script src="js/alertifyjs/alertify.js"></script>
     <script src="js/functions.js"></script>
-     <!-- // Always provide paths that start with a slash character ("/").-->
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-3.2.1.min.js"></script>  
   </head>
 
   <body>
@@ -78,7 +69,7 @@
               <li><a type="button" data-toggle="modal" data-target="#myModal">Agregar Menus</a></li>
               <li><a type="button" data-toggle="modal" data-target="#">Agregar Sliders</a></li>
               <li><a href="#">Agregar Noticias</a></li>
-              <li><a href="#">Agregar Vinculos</a></li>
+              <li><a href="agregarvinculo.php">Agregar Vinculos</a></li>
               <li><a type="button" data-toggle="modal" data-target="#agregarUsuario">Agregar Usuario</a></li>
               <li role="separator" class="divider"></li>
    
@@ -137,6 +128,7 @@
               </div>
               </div>
               <br>
+              
               <?php
                       include("contolador/conexion.php");
                       $solicitud="SELECT * FROM usuario";
@@ -173,8 +165,7 @@
                         <?php 
                       }
                       ?>
-                      </table>
-                      
+                      </table>       
 
           </div>
         </div>
@@ -242,38 +233,38 @@
                         <div class="form-group">
                           <label  class="col-sm-2 control-label">Nombres</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control"  id="nombre" name="nombre" placeholder="Ingrese Nombres">
+                            <input type="text" class="form-control"  name="nombre" placeholder="Ingrese Nombres">
                           </div>
                         </div>
                         <div class="form-group">
                           <label  class="col-sm-2 control-label">Apellidos</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control"  id="apellidos" name="apellidos" placeholder="Ingrese Apellidos">
+                            <input type="text" class="form-control"  name="apellidos" placeholder="Ingrese Apellidos">
                           </div>
                         </div>
                         <div class="form-group">
                           <label  class="col-sm-2 control-label">Email</label>
                           <div class="col-sm-10">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese Email">
+                            <input type="email" class="form-control" id="inputEmail3"name="email" placeholder="Ingrese Email">
                           </div>
                         </div>
                         <div class="form-group">
                           <label  class="col-sm-2 control-label">Usuario</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingrese Usuario">
+                            <input type="text" class="form-control" name="usuario" placeholder="Ingrese Usuario">
                           </div>
                         </div>
                         <div class="form-group">
                           <label  class="col-sm-2 control-label">Contraseña</label>
                           <div class="col-sm-10">
-                            <input type="password" class="form-control" id="pass" name="pass" placeholder="Ingrese Contraseña">
+                            <input type="password" class="form-control" name="pass" placeholder="Ingrese Contraseña">
                           </div>
                         </div>
              
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" data-dismiss="modal" id="agregarUser">Registrar</button>
+                  <input type="submit" id="agregarUser" class="btn btn-primary" value="Rgistrar">
                 </div>
               </form>
             </div>
@@ -343,16 +334,24 @@ CKEDITOR.replace( 'editor1', {
 
 
 
+ <!-- // Always provide paths that start with a slash character ("/").-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+
+
+   
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
   </body>
 </html>
-
         <!------------CODIGO PARA PASAR DATOS A FUNCTION ACTUALIZARDATOS------>
 <script type="text/javascript">
     $(document).ready(function(){
-        
-       $(document).ready(function(){
         $('#agregarUser').click(function(){
           nombre=$('#nombre').val();
           apellidos=$('#apellidos').val();
@@ -363,9 +362,10 @@ CKEDITOR.replace( 'editor1', {
         });
 
 
+
         $('#actualizadatos').click(function(){
           actualizaDatos();
         });
 
     });
-</script>    
+</script>  

@@ -128,7 +128,7 @@
      <div class="col-md-9 text-center">
 
       <div class="panel panel-default">
-          <div class="panel-heading">Ultimas Noticias</div>
+          <div class="panel-heading">Vinculos</div>
           <div class="panel-body">
             <table class="table table-striped table-hover">
              <?php
