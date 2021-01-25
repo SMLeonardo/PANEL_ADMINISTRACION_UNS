@@ -13,12 +13,13 @@ while ($fila = mysqli_fetch_array($resultado)) {
 	echo "DATOS CORRECTOS";
 	session_start();
 	
-	header('location:../index.html');
+	header('location:../entradas.html');
 }else{
 /*echo "ERROR";
 echo "<a href='../plogin.php'> Intetntar Nuevamente </a>"; */
-echo "";
-header('location:../plogin.php');
+echo "Error";
+
+	
 }
 }
 

@@ -6,17 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>WebAdmin | Usuarios</title>
+    <title>WebAdmin | Panel de Control</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-       <link rel="stylesheet" type="text/css" href="js/select2/css/select2.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
-    <link rel="stylesheet" type="text/css" href="js/alertifyjs/css/alertify.css">
+     <link rel="stylesheet" type="text/css" href="js/select2/css/select2.css">
+<link rel="stylesheet" type="text/css" href="js/alertifyjs/css/alertify.css">
     <link rel="stylesheet" type="text/css" href="js/alertifyjs/css/themes/default.css">
-    
-      
-    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+
+     <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
     <script src="js/select2/js/select2.js"></script>
     <script src="js/alertifyjs/alertify.js"></script>
     <script src="js/functions.js"></script>
@@ -50,8 +49,8 @@
             <li><a href="Menus.php">Menus</a></li>
             <li><a href="Slider.php">Sliders</a></li>
             <li><a href="Noticias.php">Noticias</a></li>
-            <li><a href="Vinculos.php">Vinculos</a></li>
-            <li class="active"><a href="usuarios.php">Usuarios</a></li>
+            <li class="active"><a href="Vinculos.php">Vinculos</a></li>
+            <li><a href="usuarios.php">Usuarios</a></li>
             <li style="position: absolute;margin-left: 73%;"><a href="plogin.php">Cerrar Sesion</a></li>
           </ul>
           
@@ -66,7 +65,7 @@
  <div class="container">
    <div class="row">
      <div class="col-md-10">
-       <h1><span class="glyphicon glyphicon-cog"></span> Panel de Control<small>Usuarios</small></h1>
+       <h1><span class="glyphicon glyphicon-cog"></span> Panel de Control<small>Administrador Web</small></h1>
      </div>
      <div class="col-md-2">
         <div class="dropdown crear">
@@ -76,9 +75,9 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
               <li><a type="button" data-toggle="modal" data-target="#myModal">Agregar Menus</a></li>
-              <li><a type="button" data-toggle="modal" data-target="#">Agregar Sliders</a></li>
-              <li><a href="#">Agregar Noticias</a></li>
-              <li><a href="agregarvinculo.php">Agregar Vinculos</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#modalSliders">Agregar Sliders</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#modalNoticia">Agregar Noticias</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#modalVinculos">Agregar Vinculos</a></li>
               <li><a type="button" data-toggle="modal" data-target="#agregarUsuario">Agregar Usuario</a></li>
               <li role="separator" class="divider"></li>
    
@@ -93,7 +92,7 @@
 <section id="breadcrumb">
   <div class="container">
     <ol class="breadcrumb">
-      <li class="active">Panel de Control / Usuarios</li>
+      <li class="active">Panel de Control</li>
     </ol>
   </div>
 </section>
@@ -129,53 +128,17 @@
      <div class="col-md-9 text-center">
 
       <div class="panel panel-default">
-          <div class="panel-heading">Ultimas Usuarios</div>
+          <div class="panel-heading">Nuevo Vinculo</div>
           <div class="panel-body">
-            <div class="row">
-              <div class="col-md-12">
-                <input type="text" class="form-control" placeholder="Filtrar Usuarios">
-              </div>
-              </div>
-              <br>
-              <?php
-                      include("contolador/conexion.php");
-                      $solicitud="SELECT * FROM usuario";
-                      $resultado=mysqli_query($conexion,$solicitud);
-              ?>
-                      
-                      <table class='table table-striped table-hover'> 
-                      <tr>
-                      <th  style="text-align: center;">Nombre</th>
-                      <th  style="text-align: center;">Apellidos</th>
-                      <th  style="text-align: center;">Usuario</th>
-                      <th style="text-align: center;">contraseña</th>
-                      <th style="text-align: center;">Email</th>
-                      <th></th>
-                      </tr>
-                  <?php    
-                      while ($fila = mysqli_fetch_row($resultado)) {
-                        $datos=$fila[0]."||".
-                        $fila[1]."||".
-                        $fila[2]."||".
-                        $fila[3]."||".
-                        $fila[4]."||".
-                        $fila[5];
-                        ?>
-                       <tr>
-                        <td ><?php echo $fila[1] ?></td>
-                        <td ><?php echo $fila[2] ?></td>
-                        <td ><?php echo $fila[3] ?></td>
-                        <td ><?php echo $fila[4] ?></td>
-                        <td ><?php echo $fila[5] ?></td>
-                        <td><button class="btn btn-default" data-toggle="modal" data-target="#editarUsuario" onclick="llenarModal_actualizar('<?php echo $datos ?>')" >Editar</button>
-                        <a class="btn btn-danger" onclick="preguntarSiNo('<?php echo $fila[0] ?>')">Borrar </a> </td>
-                        </tr>
-                        <?php 
-                      }
-                      ?>
-                      </table>
-                      
-
+          <form action="agregarimagen.php" method="post" enctype="multipart/form-data">   
+          <label>Imagen :</label><br>
+          <input type="file" name="imagen" required><br>
+          <label>Descripción :</label><br>
+          <input type="text" name="descripcion" required><br><br>
+          
+          <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >ACEPTAR</button>  
+          <button class="btn btn-danger" href="#" >CANCELAR</button>   
+          </form> 
           </div>
         </div>
      </div> 
@@ -187,7 +150,7 @@
   <p> Copyright MiPanel, &copy;2021</p>
 </footer>
 
-<!-- Modal -->
+<!------------------------------------------------ CREAR MENU  -------------------------------------------->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -203,31 +166,19 @@
                 </div>-->
                  <div class="form-group">
                     <label>Informacion de la Pagina</label>
-                    <textarea name="editor1" class="form-control"rows="3" placeholder="Informacion de la pagina"> </textarea>
+                    
                 </div>
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" name="">Publicado
-                  </label>
-                  
-                </div>
-                <div class="form-group">
-                    <label>Palabras clave</label>
-                    <input type="text" class="form-control" placeholder="Agregar algunas palabras">
-                </div>
-                <div class="form-group">
-                    <label>Meta descripcion</label>
-                    <input type="text" class="form-control" placeholder="Agregar una metadescripcion...">
-                </div>
+                
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" >Guardar Cambios</button>
+                  <button type="button" class="btn btn-primary">Guardar Cambios</button>
                 </div>
               </form>
             </div>
           </div>
         </div>
+
 <!-----------------------------------------CREAR USUARIO------------------------------------------->
 <div class="modal fade" id="agregarUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
@@ -248,7 +199,7 @@
                         <div class="form-group">
                           <label  class="col-sm-2 control-label">Apellidos</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control"  id="apellidos" name="apellidos" placeholder="Ingrese Apellidos">
+                            <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Ingrese Apellidos">
                           </div>
                         </div>
                         <div class="form-group">
@@ -279,58 +230,39 @@
             </div>
           </div>
         </div>
-<!-----------------------------------------MODAL EDITAR USUARIO ----------------------------------->
-<div class="modal fade" id="editarUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+<!-----------------------------------------CREAR VINCULOS------------------------------------------->
+<div class="modal fade" id="modalVinculos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <form class="form-horizontal">
+              <form class="form-horizontal" name="MiForm" id="MiForm" method="POST" action="modelo/agregarNoticia.php" enctype="multipart/form-data">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Registro de Usuario</h4>
+                  <h4 class="modal-title" id="myModalLabel">CREAR VINCULOS</h4>
                 </div>
-                <div class="modal-body">
-                     <div class="form-group">
-                      <input type="text" hidden="" id="ID" name="">
-                      </div>
-                      <div class="form-group">
-                          <label  class="col-sm-2 control-label">Nombres</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control"  id="nombre"  placeholder="Ingrese Nombres">
+                <div class="modal-body text-center">
+                 
+                        
+                        <div class="form-group text-center">
+                          
+                          
+                          <div class="col-sm-12" >
+                            <input type="" name="" class="form-control">
                           </div>
+                            
+                                 
+                             
                         </div>
-                        <div class="form-group">
-                          <label  class="col-sm-2 control-label">Apellidos</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" id="apellidos" placeholder="Ingrese Apellidos">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label  class="col-sm-2 control-label">Email</label>
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" id="email" placeholder="Ingrese Email">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label  class="col-sm-2 control-label">Usuario</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" id="usuario"  placeholder="Ingrese Usuario">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label  class="col-sm-2 control-label">Contraseña</label>
-                          <div class="col-sm-10">
-                            <input type="password" class="form-control" id="pass" placeholder="Ingrese Contraseña">
-                          </div>
-                        </div>
+                        
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" id="actualizadatos" class="btn btn-primary" data-dismiss="modal">Guardar Cambios</button>
+                  <button  name="submit" class="btn btn-primary" >Registrar</button>
                 </div>
               </form>
             </div>
           </div>
-        </div>  
+        </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
    <!-- SCRIPT PARA EJECUTAR EDITOR CKEDITOS
@@ -340,17 +272,24 @@
 CKEDITOR.replace( 'editor1', {
 } );
 </script>
+ <!-- // Always provide paths that start with a slash character ("/").
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 
 
+   
 
-
-
+    <script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>  -->
   </body>
 </html>
 
-        <!------------CODIGO PARA PASAR DATOS A FUNCTION ACTUALIZARDATOS------>
+ <!------------CODIGO PARA PASAR DATOS A FUNCTION CREAR USUARIO------>
 <script type="text/javascript">
-    $(document).ready(function(){
         
        $(document).ready(function(){
         $('#agregarUser').click(function(){
@@ -362,10 +301,38 @@ CKEDITOR.replace( 'editor1', {
             agregardatos(nombre,apellidos,email,usuario,pass);
         });
 
-
-        $('#actualizadatos').click(function(){
-          actualizaDatos();
+    });
+</script>    
+ <!------------CODIGO PARA PASAR DATOS A FUNCTION CREAR NOTICIA------>
+<script type="text/javascript">
+        
+       $(document).ready(function(){
+        $('#agregarNoticia').click(function(){
+          descripcion=$('#descripcion').val(); 
+          imagen=$('#file').val();
+          //var filename = document.getElementById('file').files[0].name;
+    
+    alert(files);
+            agregarNoticia(descripcion,files);
         });
 
     });
-</script>    
+</script> 
+
+<script type="text/javascript">
+document.getElementById("file").onchange = function(e) {
+  let reader = new FileReader();
+  
+  reader.onload = function(){
+    let preview = document.getElementById('preview'),
+        image = document.createElement('img');
+
+    image.src = reader.result;
+    
+    preview.innerHTML = '';
+    preview.append(image);
+  };
+ 
+  reader.readAsDataURL(e.target.files[0]);
+}
+</script>
