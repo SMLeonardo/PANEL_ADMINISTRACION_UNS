@@ -110,9 +110,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`User_id`, `User_nombres`, `User_apellidos`, `User_usuario`, `User_password`, `User_email`) VALUES
-(1, 'LUIS', 'SUYON ', 'LUIS', '12345678', 'LUIS@GMAIL.COM'),
-(2, 'LEONARDO', 'SUYON MARTINEZ', 'LEO', '12345678', 'Suyon@gmail.com'),
-(3, 'MANUEL', 'SUYON MARTINEZ', 'MANUEL', '12345678', 'Suyon@gmail.com');
+(1, 'LEONARDO', 'SUYON ', 'LEO', '12345678', 'SUYON@GMAIL.COM');
 
 -- --------------------------------------------------------
 

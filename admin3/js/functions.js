@@ -111,7 +111,11 @@ function preguntarSiNo(id){
 					function(){ eliminarDatos(id) }
                 , function(){ alertify.error('Se cancelo')});
 }
-
+function preguntarSiNoVinculo(id){
+	alertify.confirm('Eliminar Datos', '¿Esta seguro de eliminar este registro?', 
+					function(){ eliminarVinculo(id) }
+                , function(){ alertify.error('Se cancelo')});
+}
 function eliminarDatos(id){
 
 	cadena="id=" + id;
@@ -124,6 +128,25 @@ function eliminarDatos(id){
 				if(r==1){
 					//$('#tabla').load('componentes/tabla.php');
 					alertify.success("Eliminado con exito!");
+				}else{
+					alertify.error("Fallo el servidor :(");
+				}
+			}
+		});
+}
+function eliminarVinculo(id){
+
+	cadena="id=" + id;
+
+		$.ajax({
+			type:"POST",
+			url:"eliminar_vinculo.php",
+			data:cadena,
+			success:function(r){
+				if(r==1){
+					//$('#tabla').load('componentes/tabla.php');
+					alertify.success("Eliminado con exito!");
+					window.location.href="Vinculos.php";
 				}else{
 					alertify.error("Fallo el servidor :(");
 				}

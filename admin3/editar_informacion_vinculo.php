@@ -4,7 +4,7 @@ include("contolador/conexion.php");
         Comprovamos que se aya pasado un parametro: isset($_FILES['miArchivo'])
         Comprovamos que el parametro no esta vacio isset($_FILES['miArchivo'] !='')
     */
-    if((isset($_FILES['imagen'])) && ($_FILES['imagen'] !='')){
+    if((($_FILES['imagen']['name'])!='')){
        
         $descripcion=$_REQUEST['descripcion'];
         $nombreimg=$_FILES['imagen']['name'];
@@ -15,10 +15,10 @@ include("contolador/conexion.php");
 
         move_uploaded_file($archivo,$ruta);
 
-        $sql="UPDATE vinculos set descripcion='$descripcion',ruta_imagen='$ruta'
+        $consulta="UPDATE vinculos set descripcion='$descripcion',ruta_imagen='$ruta'
         where id_vinculos='$id'";
-        $query=mysqli_query($conexion,$sql);
-        if($query){
+$query=mysqli_query($conexion,$consulta);
+    if($query){
         header('location:../admin3/Vinculos.php');
         }else{
         echo"Error";
@@ -31,12 +31,12 @@ include("contolador/conexion.php");
 
         $sql="UPDATE vinculos set descripcion='$descripcion'
 				where id_vinculos='$id'";
-$query=mysqli_query($conexion,$sql);
-if($query){
-    header('location:../admin3/Vinculos.php');
-}else{
-    echo"Error";
-}
+        $query=mysqli_query($conexion,$sql);
+        if($query){
+        header('location:../admin3/Vinculos.php');
+    }else{
+        echo"Error";
+    }
     }
 
  ?>
