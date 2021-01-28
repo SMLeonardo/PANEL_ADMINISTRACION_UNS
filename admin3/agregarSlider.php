@@ -45,7 +45,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Panel de Control</a></li>
+          <li><a href="index.html">Panel de Control</a></li>
             <li><a href="Menus.php">Menus</a></li>
             <li class="active"><a href="Slider.php">Sliders</a></li>
             <li><a href="Noticias.php">Noticias</a></li>
@@ -74,9 +74,12 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a type="button" href="agregarSlider.php"><img src="imagenes/add.png" style="width: 30px;"> Agregar Sliders</a></li>
-             
-           
+              <li><a type="button" data-toggle="modal" data-target="#myModal">Agregar Menus</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#modalSliders">Agregar Sliders</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#modalNoticia">Agregar Noticias</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#modalVinculos">Agregar Vinculos</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#agregarUsuario">Agregar Usuario</a></li>
+              <li role="separator" class="divider"></li>
    
             </ul>
       </div>
@@ -124,44 +127,19 @@
 
      <div class="col-md-9 text-center">
 
-     <div class="panel panel-default">
-          <div class="panel-heading"> Sliders </div>
+      <div class="panel panel-default">
+          <div class="panel-heading">Nuevo Slider</div>
           <div class="panel-body">
-            <table class="table table-striped table-hover">
-             <?php
-                      include("contolador/conexion.php");
-                      $solicitud="SELECT * FROM sliders";
-                      $resultado=mysqli_query($conexion,$solicitud);
-                      
-              ?>
-                      
-                      <table class='table table-striped table-hover'> 
-                      <tr>
-                      <th  style="text-align: center;">N°</th>
-                      <th  style="text-align: center;">Imagen</th>
-                      <th  style="text-align: center;">Descripcion</th>
-                      <th></th>
-                      </tr>
-                  <?php    
-                      $cont=0;
-                      while ($fila = mysqli_fetch_row($resultado)) {
-                        $datos=$fila[0]."||".
-                        $fila[1]."||".$fila[2]; 
-                        $cont=$cont+1;
-                        ?>
-                      <tr>
-                        <td><?php echo $cont ?></td>
-                        <td ><img src="<?php echo $fila[2] ?>"  width="120" height="70" /></td>
-                        <td ><?php echo $fila[1] ?></td>
-                        <td class="col-md-4"><a class="btn btn-danger" href="editarSlider.php?id=<?php echo $fila[0] ?>">Editar</a>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >Ocultar</button>
-                        <a class="btn btn-danger" onclick="preguntarSiNo('<?php echo $fila[0] ?>')">Borrar </a> </td>
-                        </tr>
-                        <?php 
-                      }
-                      ?>
-                      </table>
-                      <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >Visualizar Cambios</button>
+          <form action="modelo/insertarSlider.php" method="post" enctype="multipart/form-data">   
+          <label>Imagen :</label><br>
+          <input type="file" name="imagen" id="file" required><br>
+          <div  class="form-group" id="preview" ></div>
+          <label>Descripción :</label><br>
+          <textarea  class="form-control" name="descripcion" id="descripcion" rows="5" cols="50" required></textarea ><br>
+          
+          <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >ACEPTAR</button>  
+          <button class="btn btn-danger" href="#" >CANCELAR</button>   
+          </form> 
           </div>
         </div>
      </div> 
@@ -189,22 +167,9 @@
                 </div>-->
                  <div class="form-group">
                     <label>Informacion de la Pagina</label>
-                    <textarea name="editor1" class="form-control"rows="3" placeholder="Informacion de la pagina"> </textarea>
+                    
                 </div>
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" name="">Publicado
-                  </label>
-                  
-                </div>
-                <div class="form-group">
-                    <label>Palabras clave</label>
-                    <input type="text" class="form-control" placeholder="Agregar algunas palabras">
-                </div>
-                <div class="form-group">
-                    <label>Meta descripcion</label>
-                    <input type="text" class="form-control" placeholder="Agregar una metadescripcion...">
-                </div>
+                
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -355,6 +320,7 @@ CKEDITOR.replace( 'editor1', {
 
     });
 </script> 
+
 
 <script type="text/javascript">
 document.getElementById("file").onchange = function(e) {
