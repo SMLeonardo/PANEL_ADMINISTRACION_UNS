@@ -161,14 +161,14 @@
                               # code...
                             
                         ?>
-                        <button class="btn btn-warning" id='<?php echo 'show'.$fila[0] ?>' onclick="mostrarBoton('<?php echo 'show'.$fila[0] ?>','<?php echo 'hide'.$fila[0] ?>','<?php echo $fila[0] ?>')">Ocultar </button> 
-                        <button class="btn btn-warning" id='<?php echo 'hide'.$fila[0] ?>' onclick="mostrarBoton1('<?php echo 'show'.$fila[0] ?>','<?php echo 'hide'.$fila[0] ?>','<?php echo $fila[0] ?>')"  style="display: none;">Mostrar </button> 
+                        <button class="btn btn-primary" id='<?php echo 'show'.$fila[0] ?>' onclick="mostrarBoton('<?php echo 'show'.$fila[0] ?>','<?php echo 'hide'.$fila[0] ?>','<?php echo $fila[0] ?>')">Ocultar </button> 
+                        <button class="btn btn-primary" id='<?php echo 'hide'.$fila[0] ?>' onclick="mostrarBoton1('<?php echo 'show'.$fila[0] ?>','<?php echo 'hide'.$fila[0] ?>','<?php echo $fila[0] ?>')"  style="display: none;">Mostrar </button> 
                         <?php
                             }else{
 
                             ?>
-                        <button class="btn btn-warning" id='<?php echo 'show'.$fila[0] ?>' onclick="mostrarBoton('<?php echo 'show'.$fila[0] ?>','<?php echo 'hide'.$fila[0] ?>','<?php echo $fila[0] ?>')" style="display: none;">Ocultar </button> 
-                        <button class="btn btn-warning" id='<?php echo 'hide'.$fila[0] ?>' onclick="mostrarBoton1('<?php echo 'show'.$fila[0] ?>','<?php echo 'hide'.$fila[0] ?>','<?php echo $fila[0] ?>')" >Mostrar </button>
+                        <button class="btn btn-primary" id='<?php echo 'show'.$fila[0] ?>' onclick="mostrarBoton('<?php echo 'show'.$fila[0] ?>','<?php echo 'hide'.$fila[0] ?>','<?php echo $fila[0] ?>')" style="display: none;">Ocultar </button> 
+                        <button class="btn btn-primary" id='<?php echo 'hide'.$fila[0] ?>' onclick="mostrarBoton1('<?php echo 'show'.$fila[0] ?>','<?php echo 'hide'.$fila[0] ?>','<?php echo $fila[0] ?>')" >Mostrar </button>
                             <?php
                           }
                           ?>
