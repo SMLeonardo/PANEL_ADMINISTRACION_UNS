@@ -144,18 +144,21 @@
       <div class="panel panel-default">
           <div class="panel-heading">Editar Vinculo</div>
           <div class="panel-body">
-          <form action="agregarimagen.php" method="post" enctype="multipart/form-data">   
+          <form action="editar_informacion_vinculo.php" method="post" enctype="multipart/form-data">   
           <label>Imagen :</label><br>
-          <input type="file" name="imagen" id="file" required><br>
+          <input type="file" name="imagen" id="file" ><br>
           <div  class="form-group" id="preview" >
           <img src="<?php echo $fila[2] ?>"  width="120" height="70" />
           </div>
           <label>Descripción :</label><br>
-          <input type="text" value="<?php echo $fila[1] ?>"><br>
+          <textarea  class="form-control" name="descripcion" id="descripcion" rows="5" cols="50"><?php echo $fila[1] ?></textarea ><br>
           
-          <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >ACEPTAR</button>  
-          <button class="btn btn-danger" href="#" >CANCELAR</button>   
+          <input type="text" hidden="" id="ID" name="ID" value="<?php echo $fila[0] ?>">
+          <input type="text"  hidden="" id="ruta" name="ruta" value="<?php echo $fila[2] ?>">
+          <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >ACTUALIZAR</button>  
+           
           </form> 
+          <a class="btn btn-danger" href="vinculos.php" >Cancelar</a> </td>
           </div>
         </div>
      </div> 
