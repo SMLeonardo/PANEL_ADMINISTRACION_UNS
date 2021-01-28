@@ -267,6 +267,14 @@
         </div>
 
 <!-----------------------------------------CREAR SLIDERS------------------------------------------->
+<?php
+$conexion = conexion('web', 'root', '');
+if (!$conexion) {
+  # code...
+  die();
+}
+require '';
+?>
 <div class="modal fade" id="modalSliders" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
