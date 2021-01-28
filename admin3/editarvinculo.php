@@ -74,9 +74,12 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a type="button" href="agregarvinculo.php"><img src="imagenes/add.png" style="width: 30px;"> Agregar Vinculos</a></li>
-             
-           
+              <li><a type="button" data-toggle="modal" data-target="#myModal">Agregar Menus</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#modalSliders">Agregar Sliders</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#modalNoticia">Agregar Noticias</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#modalVinculos">Agregar Vinculos</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#agregarUsuario">Agregar Usuario</a></li>
+              <li role="separator" class="divider"></li>
    
             </ul>
       </div>
@@ -125,43 +128,18 @@
      <div class="col-md-9 text-center">
 
       <div class="panel panel-default">
-          <div class="panel-heading">Vinculos</div>
+          <div class="panel-heading">Nuevo Vinculo</div>
           <div class="panel-body">
-            <table class="table table-striped table-hover">
-             <?php
-                      include("contolador/conexion.php");
-                      $solicitud="SELECT * FROM vinculos";
-                      $resultado=mysqli_query($conexion,$solicitud);
-                      
-              ?>
-                      
-                      <table class='table table-striped table-hover'> 
-                      <tr>
-                      <th  style="text-align: center;">N°</th>
-                      <th  style="text-align: center;">Imagen</th>
-                      <th  style="text-align: center;">Descripcion</th>
-                      <th></th>
-                      </tr>
-                  <?php    
-                      $cont=0;
-                      while ($fila = mysqli_fetch_row($resultado)) {
-                        $datos=$fila[0]."||".
-                        $fila[1]."||".$fila[2]; 
-                        $cont=$cont+1;
-                        ?>
-                       <tr>
-                        <td><?php echo $cont ?></td>
-                        <td ><img src="<?php echo $fila[2] ?>"  width="120" height="70" /></td>
-                        <td ><?php echo $fila[1] ?></td>
-                        <td class="col-md-4"><button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >Editar</button>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >Ocultar</button>
-                        <a class="btn btn-danger" onclick="preguntarSiNo('<?php echo $fila[0] ?>')">Borrar </a> </td>
-                        </tr>
-                        <?php 
-                      }
-                      ?>
-                      </table>
-                      <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >Visualizar Cambios</button>
+          <form action="agregarimagen.php" method="post" enctype="multipart/form-data">   
+          <label>Imagen :</label><br>
+          <input type="file" name="imagen" id="file" required><br>
+          <div  class="form-group" id="preview" ></div>
+          <label>Descripción :</label><br>
+          <textarea  class="form-control" name="descripcion" id="descripcion" rows="5" cols="50" required></textarea ><br>
+          
+          <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >ACEPTAR</button>  
+          <button class="btn btn-danger" href="#" >CANCELAR</button>   
+          </form> 
           </div>
         </div>
      </div> 
@@ -286,56 +264,6 @@
             </div>
           </div>
         </div>
-
-        <!-----------------------------------------ACTUALIZAR VINCULO------------------------------------------->
-    <div class="modal fade" id="actualizarVinculo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <form class="form-horizontal" name="MiForm" id="MiForm">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Editar Vinculo</h4>
-                </div>
-                <div class="modal-body text-center">
-                 
-                        
-                        <div class="form-group text-center">
-                          
-                          <div class="form-group">
-                      <input type="text"  id="ID" name="ID">
-                      </div>
-
-                          <!--<div class="col-sm-12" >
-                            <input type="file" class="form-control" name="image" id="file" multiple>
-                            <hr>
-                            <div  class="form-group" id="preview" ></div>
-                          </div> 
-                       
-                        </div>-->
-                        <div class="col-sm-12" >
-                            <input type="file" class="form-control" name="image" id="file" multiple>
-                            <hr>
-                            <div  class="form-group" id="preview" >
-                            <img  id="imagen" name="imagen" width="100">
-                            </div>
-                          </div>
-                        <div class="form-group text-center">
-                          <label  class="col-sm-2 control-label">Descripcion</label><br>
-                          <div class="col-sm-12 text-center">
-                            <textarea  class="form-control" name="descripcion1" id="descripcion1" rows="5" cols="50"></textarea >
-                          </div>
-                        </div>
-                      
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  
-                  <button type="button" id="actualizanoticia" class="btn btn-primary" data-dismiss="modal">Guardar Cambios</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
    <!-- SCRIPT PARA EJECUTAR EDITOR CKEDITOS
@@ -391,6 +319,7 @@ CKEDITOR.replace( 'editor1', {
 
     });
 </script> 
+
 
 <script type="text/javascript">
 document.getElementById("file").onchange = function(e) {
