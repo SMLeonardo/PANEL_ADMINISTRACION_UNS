@@ -116,7 +116,7 @@
      <div class="col-md-9 text-center">
 
       <div class="panel panel-default">
-          <div class="panel-heading">Ultimas Usuarios</div>
+          <div class="panel-heading">Ultimas Noticias</div>
           <div class="panel-body">
             <div class="row">
               <div class="col-md-12">
