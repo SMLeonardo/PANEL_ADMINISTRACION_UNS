@@ -153,7 +153,7 @@
                         <td><?php echo $cont ?></td>
                         <td ><img src="<?php echo $fila[2] ?>"  width="120" height="70" /></td>
                         <td ><?php echo $fila[1] ?></td>
-                        <td class="col-md-4"><button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >Editar</button>
+                        <td class="col-md-4"><a class="btn btn-danger" href="editarvinculo.php?id=<?php echo $fila[0] ?>">Editar</a>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >Ocultar</button>
                         <a class="btn btn-danger" onclick="preguntarSiNo('<?php echo $fila[0] ?>')">Borrar </a> </td>
                         </tr>

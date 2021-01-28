@@ -124,18 +124,34 @@
           </div>
         </div>
       </div>
+            <?php
+
+            include("contolador/conexion.php");
+            $id=$_REQUEST['id'];
+            $solicitud="SELECT * FROM vinculos where id_vinculos='$id'";
+            $resultado=mysqli_query($conexion,$solicitud);
+            while ($fila = mysqli_fetch_row($resultado)) {
+                $datos=$fila[0]."||".
+                $fila[1]."||".$fila[2]; 
+                
+
+               
+                ?>
+           
 
      <div class="col-md-9 text-center">
 
       <div class="panel panel-default">
-          <div class="panel-heading">Nuevo Vinculo</div>
+          <div class="panel-heading">Editar Vinculo</div>
           <div class="panel-body">
           <form action="agregarimagen.php" method="post" enctype="multipart/form-data">   
           <label>Imagen :</label><br>
           <input type="file" name="imagen" id="file" required><br>
-          <div  class="form-group" id="preview" ></div>
+          <div  class="form-group" id="preview" >
+          <img src="<?php echo $fila[2] ?>"  width="120" height="70" />
+          </div>
           <label>Descripción :</label><br>
-          <textarea  class="form-control" name="descripcion" id="descripcion" rows="5" cols="50" required></textarea ><br>
+          <input type="text" value="<?php echo $fila[1] ?>"><br>
           
           <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >ACEPTAR</button>  
           <button class="btn btn-danger" href="#" >CANCELAR</button>   
@@ -145,6 +161,11 @@
      </div> 
     </div>
   </div>
+  <?php 
+  
+
+  }
+  ?>
 </section>
 
 <footer id="footer">
