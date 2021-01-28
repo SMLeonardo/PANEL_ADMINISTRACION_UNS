@@ -133,25 +133,28 @@
             <table class="table table-striped table-hover">
              <?php
                       include("contolador/conexion.php");
-                      $solicitud="SELECT * FROM noticias";
+                      $solicitud="SELECT * FROM vinculos";
                       $resultado=mysqli_query($conexion,$solicitud);
                       
               ?>
                       
                       <table class='table table-striped table-hover'> 
                       <tr>
+                      <th  style="text-align: center;">N°</th>
                       <th  style="text-align: center;">Imagen</th>
                       <th  style="text-align: center;">Descripcion</th>
                       <th></th>
                       </tr>
                   <?php    
+                      $cont=0;
                       while ($fila = mysqli_fetch_row($resultado)) {
                         $datos=$fila[0]."||".
-                        $fila[1]; 
+                        $fila[1]."||".$fila[2]; 
+                        $cont=$cont+1;
                         ?>
                        <tr>
-            
-                        <td ><img src="modelo/verNoticia.php?NT_id='<?php echo $fila[0] ?>'"  width="35" /></td>
+                        <td><?php echo $cont ?></td>
+                        <td ><img src="<?php echo $fila[2] ?>"  width="120" height="70" /></td>
                         <td ><?php echo $fila[1] ?></td>
                         <td><button class="btn btn-default" data-toggle="modal" data-target="#" onclick="" >Editar</button>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >Ocultar</button>
@@ -161,6 +164,7 @@
                       }
                       ?>
                       </table>
+                      <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >Visualizar Cambios</button>
           </div>
         </div>
      </div> 
