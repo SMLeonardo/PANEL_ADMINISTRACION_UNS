@@ -3,7 +3,7 @@ include "../contolador/conexion.php";
 $descripcion=$_REQUEST['descripcion'];
 $nombreimg=$_FILES['imagen']['name'];
 $archivo=$_FILES['imagen']['tmp_name'];
-$ruta="fotos";
+$ruta="../fotos";
 $ruta=$ruta."/".$nombreimg;
 move_uploaded_file($archivo,$ruta);
 $ruta="fotos";
