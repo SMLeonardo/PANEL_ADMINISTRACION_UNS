@@ -22,7 +22,7 @@ include("../contolador/conexion.php");
         $descripcion=$_POST['descripcion'];
         //Insertando los datos
         //Creando el query
-        $query = "INSERT INTO noticias (NT_descripcion,NT_imagen,NT_extension ) VALUES ('$descripcion' ,'$contenido' ,'$fileExtension' )";
+        $query = "INSERT INTO noticias (NT_descripcion,NT_imagen,NT_extension,NT_estado ) VALUES ('$descripcion' ,'$contenido' ,'$fileExtension','1')";
         //Ejecutando el Query
         $result = mysqli_query($conexion, $query);
         

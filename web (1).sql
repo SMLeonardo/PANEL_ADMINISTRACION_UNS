@@ -42,11 +42,19 @@ CREATE TABLE `noticias` (
   `NT_id` int(11) NOT NULL,
   `NT_descripcion` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
   `NT_imagen` longblob NOT NULL,
-  `NT_extension` varchar(10) COLLATE utf8_spanish_ci NOT NULL
+  `NT_extension` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `NT_estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Estructura de tabla para la tabla `secciones`
+--
 
-
+CREATE TABLE `secciones` (
+  `SEC_id` int(11) NOT NULL,
+  `SEC_descripcion` varchar(125) COLLATE utf8_spanish_ci NOT NULL,
+  `SEC_estado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Estructura de tabla para la tabla `sliders`
@@ -131,6 +139,12 @@ ALTER TABLE `noticias`
   ADD PRIMARY KEY (`NT_id`);
 
 --
+-- Indices de la tabla `secciones`
+--
+ALTER TABLE `secciones`
+  ADD PRIMARY KEY (`SEC_id`);
+
+--
 -- Indices de la tabla `sliders`
 --
 ALTER TABLE `sliders`
@@ -171,7 +185,13 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT de la tabla `noticias`
 --
 ALTER TABLE `noticias`
-  MODIFY `NT_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `NT_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `secciones`
+--
+ALTER TABLE `secciones`
+  MODIFY `SEC_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `sliders`
@@ -189,13 +209,13 @@ ALTER TABLE `tipo_estado`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `User_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `User_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `vinculos`
 --
 ALTER TABLE `vinculos`
-  MODIFY `id_vinculos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_vinculos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
