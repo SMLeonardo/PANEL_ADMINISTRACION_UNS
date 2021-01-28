@@ -14,8 +14,8 @@ include("../contolador/conexion.php");
 
         $id=$_REQUEST['ID'];
           
-        $sql="UPDATE sliders set estado='$cambio'
-        where id_slider='$id'";
+        $sql="UPDATE vinculos set estado='$cambio'
+        where id_vinculos='$id'";
         $query=mysqli_query($conexion,$sql);
         if($query){
         header('location:../Vinculos.php');
