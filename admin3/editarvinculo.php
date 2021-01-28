@@ -154,7 +154,7 @@
           <textarea  class="form-control" name="descripcion" id="descripcion" rows="5" cols="50"><?php echo $fila[1] ?></textarea ><br>
           
           <input type="text" hidden="" id="ID" name="ID" value="<?php echo $fila[0] ?>">
-          <input type="text"  hidden="" id="ruta" name="ruta" value="<?php echo $fila[2] ?>">
+          <input type="text" hidden="" id="ruta" name="ruta" value="<?php echo $fila[2] ?>">
           <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >ACTUALIZAR</button>  
            
           </form> 
