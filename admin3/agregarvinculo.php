@@ -132,9 +132,10 @@
           <div class="panel-body">
           <form action="agregarimagen.php" method="post" enctype="multipart/form-data">   
           <label>Imagen :</label><br>
-          <input type="file" name="imagen" required><br>
+          <input type="file" name="imagen" id="file" required><br>
+          <div  class="form-group" id="preview" ></div>
           <label>Descripción :</label><br>
-          <input type="text" name="descripcion" required><br><br>
+          <textarea  class="form-control" name="descripcion" id="descripcion" rows="5" cols="50" required></textarea ><br>
           
           <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >ACEPTAR</button>  
           <button class="btn btn-danger" href="#" >CANCELAR</button>   
@@ -318,6 +319,7 @@ CKEDITOR.replace( 'editor1', {
 
     });
 </script> 
+
 
 <script type="text/javascript">
 document.getElementById("file").onchange = function(e) {

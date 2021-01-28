@@ -38,9 +38,10 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="index.html">Panel de Control</a></li>
+            <li class="active"><a href="Secciones.php">Secciones</a></li>
             <li><a href="Menus.php">Menus</a></li>
             <li><a href="Slider.php">Sliders</a></li>
-            <li class="active"><a href="Noticias.php">Noticias</a></li>
+            <li ><a href="Noticias.php">Noticias</a></li>
             <li><a href="Vinculos.php">Vinculos</a></li>
             <li><a href="usuarios.php">Usuarios</a></li>
             <li style="position: absolute;margin-left: 73%;"><a href="plogin.php">Cerrar Sesion</a></li>
@@ -67,7 +68,7 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
               
-              <li><a type="button" data-toggle="modal" data-target="#modalNoticia"><img src="imagenes/add.png" style="width: 30px;"> Agregar Noticias</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#modalSeccion"><img src="imagenes/add.png" style="width: 30px;"> Agregar Seccion</a></li>
    
             </ul>
       </div>
@@ -93,6 +94,7 @@
           <a href="#" class="list-group-item active color-principal">
             <span class="glyphicon glyphicon-cog"></span> Panel de Control
           </a>
+          <a href="paginas.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt"></span> Secciones <span class="badge">1</span></a>
           <a href="paginas.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt"></span> Menus <span class="badge">1</span></a>
           <a href="entradas.html" class="list-group-item"><span class="glyphicon glyphicon-pencil"></span> <span class="badge">1</span> Sliders</a>
           <a href="entradas.html" class="list-group-item"><span class="glyphicon glyphicon-pencil"></span> <span class="badge">1</span> Noticias</a>
@@ -116,7 +118,7 @@
      <div class="col-md-9 text-center">
 
       <div class="panel panel-default">
-          <div class="panel-heading">Ultimas Noticias</div>
+          <div class="panel-heading">Secciones Creadas</div>
           <div class="panel-body">
             <div class="row">
               <div class="col-md-12">
@@ -127,7 +129,7 @@
               
                <?php
                       include("contolador/conexion.php");
-                      $solicitud="SELECT * FROM noticias";
+                      $solicitud="SELECT * FROM secciones";
                       $resultado=mysqli_query($conexion,$solicitud);
                       
               ?>
@@ -135,7 +137,7 @@
                       <table class='table table-striped table-hover' id='noti'> 
                       <tr>
                       <th  style="text-align: center;">Nº</th> 
-                      <th  style="text-align: center;">Imagen</th>
+                      
                       <th  style="text-align: center;">Descripcion</th>
                       <th style="text-align: center;">Operaciones</th>
                       <th></th>
@@ -147,17 +149,15 @@
                   <?php    
                       while ($fila = mysqli_fetch_array($resultado)) {
                         $datos=$fila[0]."||".
-                       // $fila[1]."||".
-                        $fila[1]; 
+                       $fila[1]; 
                         ?>
                        <tr>
                         <td><?php echo $fila[0] ?></td>
-                        <td ><img src="modelo/verNoticia.php?id=<?php echo $fila[0] ?>" width="100"></td>
                         <td ><?php echo $fila[1] ?></td>
-                        <td class="col-md-4"><button class="btn btn-default" data-toggle="modal" data-target="#actualizarNoticia" onclick="llenarModal_Noticia('<?php echo $datos ?>')" >Editar</button>
-                        <a class="btn btn-danger" onclick="preguntarSiNoN('<?php echo $fila[0] ?>')">Borrar </a> 
+                        <td class="col-md-4"><button class="btn btn-default" data-toggle="modal" data-target="#actualizarSeccion" onclick="llenarModal_Seccion('<?php echo $datos ?>')" >Editar</button>
+                        
                         <?php
-                            if ($fila[4]=='1') {
+                            if ($fila[2]=='1') {
                               # code...
                             
                         ?>
@@ -195,34 +195,21 @@
 </footer>
 
 
-<!-----------------------------------------CREAR NOTICIA------------------------------------------->
-<div class="modal fade" id="modalNoticia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-----------------------------------------CREAR SECCIONES------------------------------------------->
+<div class="modal fade" id="modalSeccion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <form class="form-horizontal" name="MiForm" id="MiForm" method="POST" action="modelo/agregarNoticia.php" enctype="multipart/form-data">
+              <form class="form-horizontal" name="MiForm" id="MiForm" method="POST" action="modelo/agregarSeccion.php" enctype="multipart/form-data">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Registro de Noticia</h4>
+                  <h4 class="modal-title" id="myModalLabel">Registro de Seccion</h4>
                 </div>
                 <div class="modal-body text-center">
                  
-                        
-                        <div class="form-group text-center">
-                          
-                          
-                          <div class="col-sm-12" >
-                            <input type="file" class="form-control" name="image" id="file" multiple>
-                            <hr>
-                            <div  class="form-group" id="preview" ></div>
-                          </div>
-                            
-                                 
-                             
-                        </div>
                         <div class="form-group text-center">
                           <label  class="col-sm-2 control-label">Descripcion</label>
                           <div class="col-sm-12">
-                            <textarea  class="form-control" name="descripcion" id="descripcion" rows="5" cols="50"></textarea >
+                            <input type="text" class="form-control" name="descripcion" id="descripcion">   
                           </div>
                         </div>
                 </div>
@@ -235,8 +222,8 @@
           </div>
         </div>
 
-<!-----------------------------------------ACTUALIZAR NOTICIA------------------------------------------->
-<div class="modal fade" id="actualizarNoticia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!---------------------------------------ACTUALIZAR SECCIONES------------------------------------------->
+<div class="modal fade" id="actualizarSeccion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <form class="form-horizontal" name="MiForm" id="MiForm">
@@ -252,18 +239,10 @@
                           <div class="form-group">
                       <input type="text" hidden="" id="ID" name="ID">
                       </div>
-
-                          <!--<div class="col-sm-12" >
-                            <input type="file" class="form-control" name="image" id="file" multiple>
-                            <hr>
-                            <div  class="form-group" id="preview" ></div>
-                          </div> 
-                       
-                        </div>-->
                         <div class="form-group text-center">
                           <label  class="col-sm-2 control-label">Descripcion</label><br>
                           <div class="col-sm-12 text-center">
-                            <textarea  class="form-control" name="descripcion1" id="descripcion1" rows="5" cols="50"></textarea >
+                             <input type="text" class="form-control" name="descripcion1" id="descripcion1">
                           </div>
                         </div>
                       
@@ -271,7 +250,7 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   
-                  <button type="button" id="actualizanoticia" class="btn btn-primary" data-dismiss="modal">Guardar Cambios</button>
+                  <button type="button" id="actualizaSeccion" class="btn btn-primary" data-dismiss="modal">Guardar Cambios</button>
                 </div>
               </form>
             </div>
@@ -313,22 +292,22 @@ CKEDITOR.replace( 'editor1', {
         var btn_2 = document.getElementById(h);
             btn_1.style.display = 'none';
             btn_2.style.display = 'inline';
-            actualizaEstadoNoticia(c,'0');
+            actualizaEstadoSeccion(c,'0');
         }
         function mostrarBoton1 (id,h,c) {
           var btn_1 = document.getElementById(id);
         var btn_2 = document.getElementById(h);
             btn_1.style.display = 'inline';
             btn_2.style.display = 'none';
-            actualizaEstadoNoticia(c,'1'); 
+            actualizaEstadoSeccion(c,'1'); 
         }
     </script>
  <!------------CODIGO PARA PASAR DATOS A FUNCTION CREAR NOTICIA------>
 <script type="text/javascript">
     $(document).ready(function(){
 
-        $('#actualizanoticia').click(function(){
-          actualizaNoticia();
+        $('#actualizaSeccion').click(function(){
+          actualizaSeccion();
         });
 
     });

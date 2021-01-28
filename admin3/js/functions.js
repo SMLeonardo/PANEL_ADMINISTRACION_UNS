@@ -30,6 +30,7 @@ function llenarModal_Noticia(datos){
 	d=datos.split('||');
 	$("#ID").val(d[0]);
 	 $("#descripcion1").val(d[1]);
+	 $("#imagen").val(d[2]);
 	//$("#preview").val(d[2]);
     //$("#extension").val(d[3]); 
     
