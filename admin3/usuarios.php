@@ -66,12 +66,9 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a type="button" data-toggle="modal" data-target="#myModal">Agregar Menus</a></li>
-              <li><a type="button" data-toggle="modal" data-target="#">Agregar Sliders</a></li>
-              <li><a href="#">Agregar Noticias</a></li>
-              <li><a href="agregarvinculo.php">Agregar Vinculos</a></li>
-              <li><a type="button" data-toggle="modal" data-target="#agregarUsuario">Agregar Usuario</a></li>
-              <li role="separator" class="divider"></li>
+              
+              <li><a type="button" data-toggle="modal" data-target="#agregarUsuario"><img src="imagenes/add.png" style="width: 30px;">Agregar Usuario</a></li>
+              
    
             </ul>
       </div>
