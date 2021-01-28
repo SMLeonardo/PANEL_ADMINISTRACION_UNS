@@ -12,7 +12,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
      <link rel="stylesheet" type="text/css" href="js/select2/css/select2.css">
-<link rel="stylesheet" type="text/css" href="js/alertifyjs/css/alertify.css">
+    <link rel="stylesheet" type="text/css" href="js/alertifyjs/css/alertify.css">
     <link rel="stylesheet" type="text/css" href="js/alertifyjs/css/themes/default.css">
 
      <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
@@ -170,7 +170,7 @@
                             <?php
                           }
                           ?>
-                          <a class="btn btn-danger" onclick="preguntarSiNo('<?php echo $fila[0] ?>')">Borrar </a> </td>
+                          <a class="btn btn-danger" onclick="preguntarSiNoSlider('<?php echo $fila[0] ?>')">Borrar </a> </td>
                       </tr>
                         <?php 
                       }
