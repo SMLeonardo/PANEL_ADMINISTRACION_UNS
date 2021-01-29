@@ -59,6 +59,18 @@ CREATE TABLE `secciones` (
   `SEC_estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+
+--
+-- Volcado de datos para la tabla `secciones`
+--
+
+INSERT INTO `secciones` (`SEC_id`, `SEC_descripcion`, `SEC_estado`) VALUES
+(1, 'MENU1', 1),
+(2, 'MENU2', 1),
+(3, 'SERVICIOS', 1),
+(4, 'NOTICIAS', 1),
+(5, 'SECCION VIDEO', 1),
+(6, 'VINCULOS', 1);
 -- --------------------------------------------------------
 
 --
@@ -72,6 +84,14 @@ CREATE TABLE `sliders` (
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `sliders`
+--
+
+INSERT INTO `sliders` (`id_slider`, `descripcion`, `ruta_imagen`, `estado`) VALUES
+(1, 'IMAGEN1', 'fotos/6974ce5ac660610b44d9b9fed0ff9548.jpg', 1),
+(2, 'IMAGEN2', 'fotos/banner1.jpg', 1),
+(3, 'IMAGEN3', 'fotos/ec8956637a99787bd197eacd77acce5e.jpg', 1);
 -- --------------------------------------------------------
 
 --
@@ -111,7 +131,11 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`User_id`, `User_nombres`, `User_apellidos`, `User_usuario`, `User_password`, `User_email`) VALUES
-(1, 'LEONARDO', 'SUYON ', 'LEO', '12345678', 'SUYON@GMAIL.COM');
+(1, 'LEONARDO', 'SUYON ', 'LEO', '12345678', 'SUYON@GMAIL.COM'),
+(2, 'MIGUEL ', 'GAMBINI', 'MIGUEL', '12345678', 'GAMBINI@GMAIL.COM'),
+(3, 'JOSEPH', 'GOICOCHEA', 'JOSEPH', '12345678', 'JOSEPH@GMAIL.COM'),
+(4, 'CESAR', 'AGUIRRE', 'CESAR', '12345678', 'AGUIRRE@GMAIL.COM'),
+(5, 'JUNIOR1', 'SILVA', 'JUNIOR', '12345678', 'JUNIOR@GMAIL.COM');
 
 -- --------------------------------------------------------
 
@@ -125,6 +149,15 @@ CREATE TABLE `vinculos` (
   `ruta_imagen` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+INSERT INTO `vinculos` (`id_vinculos`, `descripcion`, `ruta_imagen`, `estado`) VALUES
+(1, 'CONTROLORIA', 'fotos/V1.png', 1),
+(2, 'EL PERUANO', 'fotos/V2.png', 1),
+(4, 'INFOBRAS', 'fotos/V3.png', 1),
+(5, 'PODER JUDICIAL', 'fotos/V4.png', 1),
+(6, 'PRONABEC', 'fotos/V5.png', 1);
+
 
 --
 -- Índices para tablas volcadas
@@ -210,7 +243,7 @@ ALTER TABLE `sliders`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `User_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `User_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `vinculos`
