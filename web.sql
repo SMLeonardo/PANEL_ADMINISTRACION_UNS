@@ -139,15 +139,13 @@ ALTER TABLE `menus`
 -- Indices de la tabla `noticias`
 --
 ALTER TABLE `noticias`
-  ADD PRIMARY KEY (`NT_id`),
-  ADD KEY `NT_estado` (`NT_estado`);
+  ADD PRIMARY KEY (`NT_id`);
 
 --
 -- Indices de la tabla `secciones`
 --
 ALTER TABLE `secciones`
-  ADD PRIMARY KEY (`SEC_id`),
-  ADD KEY `SEC_estado` (`SEC_estado`);
+  ADD PRIMARY KEY (`SEC_id`);
 
 --
 -- Indices de la tabla `sliders`
@@ -222,18 +220,6 @@ ALTER TABLE `vinculos`
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `noticias`
---
-ALTER TABLE `noticias`
-  ADD CONSTRAINT `noticias_ibfk_1` FOREIGN KEY (`NT_estado`) REFERENCES `tipo_estado` (`id_estado`);
-
---
--- Filtros para la tabla `secciones`
---
-ALTER TABLE `secciones`
-  ADD CONSTRAINT `secciones_ibfk_1` FOREIGN KEY (`SEC_estado`) REFERENCES `tipo_estado` (`id_estado`);
 
 --
 -- Filtros para la tabla `sliders`

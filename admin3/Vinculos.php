@@ -176,7 +176,7 @@
                       }
                       ?>
                       </table>
-                      <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >Visualizar Cambios</button>
+                      <button class="btn btn-primary" href="REMODELACION-DE-LA-PAGINA-DE-LA-UNS/index.php" target="_blank">Visualizar Cambios</button>
           </div>
         </div>
      </div> 
