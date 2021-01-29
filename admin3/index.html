@@ -12,7 +12,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
      <link rel="stylesheet" type="text/css" href="js/select2/css/select2.css">
-    <link rel="stylesheet" type="text/css" href="js/alertifyjs/css/alertify.css">
+<link rel="stylesheet" type="text/css" href="js/alertifyjs/css/alertify.css">
     <link rel="stylesheet" type="text/css" href="js/alertifyjs/css/themes/default.css">
 
      <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
@@ -48,7 +48,7 @@
             <li><a href="index.html">Panel de Control</a></li>
             <li><a href="Secciones.php">Secciones</a></li>
             <li><a href="Menus.php">Menus</a></li>
-            <li class="active"><a href="Slider.php">Sliders</a></li>
+            <li><a href="Slider.php">Sliders</a></li>
             <li><a href="Noticias.php">Noticias</a></li>
             <li><a href="Vinculos.php">Vinculos</a></li>
             <li><a href="usuarios.php">Usuarios</a></li>
@@ -75,9 +75,12 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a type="button" href="agregarSlider.php"><img src="imagenes/add.png" style="width: 30px;"> Agregar Sliders</a></li>
-             
-           
+              <li><a type="button" data-toggle="modal" data-target="#myModal">Agregar Menus</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#modalSliders">Agregar Sliders</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#modalNoticia">Agregar Noticias</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#modalVinculos">Agregar Vinculos</a></li>
+              <li><a type="button" data-toggle="modal" data-target="#agregarUsuario">Agregar Usuario</a></li>
+              <li role="separator" class="divider"></li>
    
             </ul>
       </div>
@@ -124,64 +127,83 @@
       </div>
 
      <div class="col-md-9 text-center">
+        <div class="panel panel-default">
+          <div class="panel-heading">Vista Rapida</div>
+          <div class="panel-body">
+            <div class="col-md-4">
+              <div class="well dash-box">
+              <h2><span class="glyphicon glyphicon-user"></span> 1</h2>
+              <h4>Usuarios</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="well dash-box">
+              <h2><span class="glyphicon glyphicon-list-alt"></span> 1</h2>
+              <h4>Menus</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="well dash-box">
+              <h2><span class="glyphicon glyphicon-pencil"></span> 1</h2>
+              <h4>Sliders</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="well dash-box">
+              <h2><span class="glyphicon glyphicon-pencil"></span> 1</h2>
+              <h4>Noticias</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="well dash-box">
+              <h2><span class="glyphicon glyphicon-pencil"></span> 1</h2>
+              <h4>Vinculos</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="well dash-box">
+              <h2><span class="glyphicon glyphicon-stats"></span> 0</h2>
+              <h4>Visitantes</h4>
+              </div>
+            </div>
+          </div>
+      </div>
 
-     <div class="panel panel-default">
-          <div class="panel-heading"> Sliders </div>
+      <div class="panel panel-default">
+          <div class="panel-heading">Ultimos Usuarios</div>
           <div class="panel-body">
             <table class="table table-striped table-hover">
-             <?php
-                      include("contolador/conexion.php");
-                      $solicitud="SELECT * FROM sliders";
-                      $resultado=mysqli_query($conexion,$solicitud);
-                      
-              ?>
-                      
-                      <table class='table table-striped table-hover'> 
-                      <tr>
-                      <th  style="text-align: center;">N°</th>
-                      <th  style="text-align: center;">Imagen</th>
-                      <th  style="text-align: center;">Descripcion</th>
-                      <th></th>
-                      </tr>
-                  <?php    
-                      $cont=0;
-                      while ($fila = mysqli_fetch_row($resultado)) {
-                        $datos=$fila[0]."||".
-                        $fila[1]."||".$fila[2]."||".$fila[3]; 
-                        $cont=$cont+1;
-                        ?>
-                      <tr>
-                        <td><?php echo $cont ?></td>
-                        <td ><img src="<?php echo $fila[2] ?>"  width="120" height="70" /></td>
-                        <td ><?php echo $fila[1] ?></td>
-                        <td class="col-md-4"> <a class="btn btn-default" href="editarSlider.php?id=<?php echo $fila[0] ?>">Editar</a> 
-                                              
-                        <?php
-                            if ($fila[3]=='1') {
-                                                     
-                        ?>
-
-                        <a class="btn btn-primary" href="verSlider.php?id=<?php echo $fila[0] ?>">Ocultar</a> 
-
-                        <?php
-                            }else{
-
-                            ?>
-                         <a class="btn btn-primary" href="verSlider.php?id=<?php echo $fila[0] ?>">Mostrar</a> 
-                            <?php
-                          }
-                          ?>
-                          <a class="btn btn-danger" onclick="preguntarSiNoSlider('<?php echo $fila[0] ?>')">Borrar </a> </td>
-                      </tr>
-                        <?php 
-                      }
-                      ?>
-                         
-                        
-
-                        
-                      </table>
-                      <button class="btn btn-primary" data-toggle="modal" data-target="#" onclick="" >Visualizar Cambios</button>
+              <tr>
+                <th  style="text-align: center;">Nombre</th>
+                <th  style="text-align: center;">Email</th>
+                <th  style="text-align: center;">Registrado</th>
+              </tr>
+              <tr>
+                <td>LEONARDO SUYON</td>
+                <td>SUYON@GAMIL.COM</td>
+                <td>Enero 01, 2021</td>
+              </tr>
+              <tr>
+                <td>MIGUEL GAMBINI</td>
+                <td>GAMBINI@GMAIL.COM</td>
+                <td>Enero 01, 2021</td>
+              </tr>
+              <tr>
+                <td>JOSEPH GOICOCHEA</td>
+                <td>JOSEPH@GMAIL.COM</td>
+                <td>Enero 01, 2021</td>
+              </tr>
+              <tr>
+                <td>CESAR AGUIRRE</td>
+                <td>AGUIRRE@GMAIL.COM</td>
+                <td>Enero 01, 2021</td>
+              </tr>
+              <tr>
+                <td>JUNIOR SILVA</td>
+                <td>JUNIOR@GMAIL.COM</td>
+                <td>Enero 01, 2021</td>
+              </tr>
+            </table>
           </div>
         </div>
      </div> 
@@ -287,15 +309,14 @@
           </div>
         </div>
 
-<!-----------------------------------------CREAR SLIDERS------------------------------------------->
-
-<div class="modal fade" id="modalSliders" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-----------------------------------------CREAR NOTICIA------------------------------------------->
+<div class="modal fade" id="modalNoticia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <form class="form-horizontal" name="MiForm" id="MiForm" method="POST" action="modelo/agregarNoticia.php" enctype="multipart/form-data">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">CREAR SLIDER</h4>
+                  <h4 class="modal-title" id="myModalLabel">Registro de Noticia</h4>
                 </div>
                 <div class="modal-body text-center">
                  
@@ -304,13 +325,20 @@
                           
                           
                           <div class="col-sm-12" >
-                            <input type="" name="" class="form-control">
+                            <input type="file" class="form-control" name="image" id="file" multiple>
+                            <hr>
+                            <div  class="form-group" id="preview" ></div>
                           </div>
                             
                                  
                              
                         </div>
-                        
+                        <div class="form-group text-center">
+                          <label  class="col-sm-2 control-label">Descripcion</label>
+                          <div class="col-sm-12">
+                            <textarea  class="form-control" name="descripcion" id="descripcion" rows="5" cols="50"></textarea >
+                          </div>
+                        </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -30,9 +30,14 @@ function llenarModal_Noticia(datos){
 	d=datos.split('||');
 	$("#ID").val(d[0]);
 	 $("#descripcion1").val(d[1]);
-	 $("#imagen").val(d[2]);
-	//$("#preview").val(d[2]);
-    //$("#extension").val(d[3]); 
+    
+}
+////////////////////NOTICIA//////////////////////////
+function llenarModal_Seccion(datos){
+
+	d=datos.split('||');
+	$("#ID").val(d[0]);
+	 $("#descripcion1").val(d[1]);
     
 }
 //////////////////////////////////////////////////////////
@@ -106,20 +111,107 @@ function actualizaNoticia(){
 
 }
 ///////////////////////////////////////////////////////////////////////////////////
-function preguntarSiNo(id){
-	alertify.confirm('Eliminar Datos', '¿Esta seguro de eliminar este registro?', 
-					function(){ eliminarDatos(id) }
-                , function(){ alertify.error('Se cancelo')});
+/////////////////////////////////ACTUALIZAR ESTADO DE NOTICIA /////////////////
+function actualizaEstadoNoticia(id,e){
+	cadena= "id=" + id+
+	         "&estado="+e;
+    //alert(cadena);
+	$.ajax({
+		type:"POST",
+		url:"modelo/actualizaEstadoNoticia.php",
+		data:cadena,
+		success:function(r){
+		
+			if(r==1){
+				//window.location.replace =("usuarios.php");
+
+				alertify.success("Actualizado con exito :)");
+
+			}else{
+				alertify.error("Fallo el servidor :(");
+			}
+		}
+	});
+
 }
-function preguntarSiNoVinculo(id){
+/////////////////////////////////ACTUALIZAR SECION /////////////////
+function actualizaSeccion(){
+    ID=$('#ID').val();
+	descripcion1=$('#descripcion1').val();
+	cadena= "ID=" + ID +
+			"&descripcion1=" + descripcion1;
+    //alertify.success(cadena);
+	$.ajax({
+		type:"POST",
+		url:"modelo/actualizarSeccion.php",
+		data:cadena,
+		success:function(r){
+		
+			if(r==1){
+				//window.location.replace =("usuarios.php");
+
+				alertify.success("Actualizado con exito :)");
+
+			}else{
+				alertify.error("Fallo el servidor :(");
+			}
+		}
+	});
+
+}
+/////////////////////////////////ACTUALIZAR ESTADO DE SECCION /////////////////
+function actualizaEstadoSeccion(id,e){
+	cadena= "id=" + id+
+	         "&estado="+e;
+    //alert(cadena);
+	$.ajax({
+		type:"POST",
+		url:"modelo/actualizaEstadoSeccion.php",
+		data:cadena,
+		success:function(r){
+		
+			if(r==1){
+				//window.location.replace =("usuarios.php");
+
+				alertify.success("Actualizado con exito :)");
+
+			}else{
+				alertify.error("Fallo el servidor :(");
+			}
+		}
+	});
+
+}
+
+//////////////////////// ELIMINAR NOTICIA ///////////////////////////////////
+function preguntarSiNoN(idn){
 	alertify.confirm('Eliminar Datos', '¿Esta seguro de eliminar este registro?', 
-					function(){ eliminarVinculo(id) }
+					function(){ eliminarNoticia(idn) }
                 , function(){ alertify.error('Se cancelo')});
 }
 
-function preguntarSiNoSlider(id){
+function eliminarNoticia(idn){
+
+	cadena="idn=" + idn;
+
+		$.ajax({
+			type:"POST",
+			url:"modelo/eliminarNoticia.php",
+			data:cadena,
+			success:function(r){
+				if(r==1){
+					//$('#tabla').load('componentes/tabla.php');
+					alertify.success("Eliminado con exito!");
+				}else{
+					alertify.error("Fallo el servidor :(");
+				}
+			}
+		});
+}
+////////////////////////////////////////////////////////////////////////////
+function preguntarSiNo(id){
 	alertify.confirm('Eliminar Datos', '¿Esta seguro de eliminar este registro?', 
-					function(){ eliminarSlider(id) }
+					function(){ eliminarDatos(id) }
                 , function(){ alertify.error('Se cancelo')});
 }
 
@@ -141,6 +233,14 @@ function eliminarDatos(id){
 			}
 		});
 }
+
+//////////////// ELIMINAR VINCULO //////////////////////////////
+function preguntarSiNoVinculo(id){
+	alertify.confirm('Eliminar Datos', '¿Esta seguro de eliminar este registro?', 
+					function(){ eliminarVinculo(id) }
+                , function(){ alertify.error('Se cancelo')});
+}
+
 function eliminarVinculo(id){
 
 	cadena="id=" + id;
@@ -159,6 +259,13 @@ function eliminarVinculo(id){
 				}
 			}
 		});
+}
+
+//////////////////////////// ELIMINAR SLIDER //////////////////////////////////
+function preguntarSiNoSlider(id){
+	alertify.confirm('Eliminar Datos', '¿Esta seguro de eliminar este registro?', 
+					function(){ eliminarSlider(id) }
+                , function(){ alertify.error('Se cancelo')});
 }
 
 function eliminarSlider(id){

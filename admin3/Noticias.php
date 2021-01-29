@@ -38,6 +38,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="index.html">Panel de Control</a></li>
+            <li><a href="Secciones.php">Secciones</a></li>
             <li><a href="Menus.php">Menus</a></li>
             <li><a href="Slider.php">Sliders</a></li>
             <li class="active"><a href="Noticias.php">Noticias</a></li>
@@ -116,7 +117,7 @@
      <div class="col-md-9 text-center">
 
       <div class="panel panel-default">
-          <div class="panel-heading">Ultimas Noticias</div>
+          <div class="panel-heading">Ultimas Usuarios</div>
           <div class="panel-body">
             <div class="row">
               <div class="col-md-12">
@@ -162,13 +163,13 @@
                             
                         ?>
                         <button class="btn btn-primary" id='<?php echo 'show'.$fila[0] ?>' onclick="mostrarBoton('<?php echo 'show'.$fila[0] ?>','<?php echo 'hide'.$fila[0] ?>','<?php echo $fila[0] ?>')">Ocultar </button> 
-                        <button class="btn btn-primary" id='<?php echo 'hide'.$fila[0] ?>' onclick="mostrarBoton1('<?php echo 'show'.$fila[0] ?>','<?php echo 'hide'.$fila[0] ?>','<?php echo $fila[0] ?>')"  style="display: none;">Mostrar </button> 
+                        <button class="btn btn-warning" id='<?php echo 'hide'.$fila[0] ?>' onclick="mostrarBoton1('<?php echo 'show'.$fila[0] ?>','<?php echo 'hide'.$fila[0] ?>','<?php echo $fila[0] ?>')"  style="display: none;">Mostrar </button> 
                         <?php
                             }else{
 
                             ?>
                         <button class="btn btn-primary" id='<?php echo 'show'.$fila[0] ?>' onclick="mostrarBoton('<?php echo 'show'.$fila[0] ?>','<?php echo 'hide'.$fila[0] ?>','<?php echo $fila[0] ?>')" style="display: none;">Ocultar </button> 
-                        <button class="btn btn-primary" id='<?php echo 'hide'.$fila[0] ?>' onclick="mostrarBoton1('<?php echo 'show'.$fila[0] ?>','<?php echo 'hide'.$fila[0] ?>','<?php echo $fila[0] ?>')" >Mostrar </button>
+                        <button class="btn btn-warning" id='<?php echo 'hide'.$fila[0] ?>' onclick="mostrarBoton1('<?php echo 'show'.$fila[0] ?>','<?php echo 'hide'.$fila[0] ?>','<?php echo $fila[0] ?>')" >Mostrar </button>
                             <?php
                           }
                           ?>

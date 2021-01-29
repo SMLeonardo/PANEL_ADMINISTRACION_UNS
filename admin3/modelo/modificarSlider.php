@@ -4,7 +4,7 @@ include("../contolador/conexion.php");
         Comprovamos que se aya pasado un parametro: isset($_FILES['miArchivo'])
         Comprovamos que el parametro no esta vacio isset($_FILES['miArchivo'] !='')
     */
-    if(($_FILES['imagen']['name'] !='')){
+    if((isset($_FILES['imagen'])) && ($_FILES['imagen'] !='')){
        
         $descripcion=$_REQUEST['descripcion'];
         $nombreimg=$_FILES['imagen']['name'];
@@ -23,24 +23,21 @@ include("../contolador/conexion.php");
         $query=mysqli_query($conexion,$sql);
         if($query){
         header('location:../Slider.php');
-        
         }else{
         echo"Error";
         }
-       
+      
     }else{
-
-       // echo 'alv wey no pasa';
         $descripcion=$_REQUEST['descripcion'];
         $id=$_REQUEST['ID'];
-      //  $ruta_imagen=$_REQUEST['ruta'];
+        $ruta_imagen=$_REQUEST['ruta'];
 
         $sql="UPDATE sliders set descripcion='$descripcion'
 				where id_slider='$id'";
-    $query=mysqli_query($conexion,$sql);
-    if($query){
+$query=mysqli_query($conexion,$sql);
+if($query){
     header('location:../Slider.php');
-    }else{
+}else{
     echo"Error";
 }
     }

@@ -38,6 +38,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="index.html">Panel de Control</a></li>
+            <li><a href="Secciones.php">Secciones</a></li>
             <li><a href="Menus.php">Menus</a></li>
             <li><a href="Slider.php">Sliders</a></li>
             <li><a href="Noticias.php">Noticias</a></li>
@@ -230,13 +231,13 @@
                         <div class="form-group">
                           <label  class="col-sm-2 control-label">Nombres</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control"  name="nombre" placeholder="Ingrese Nombres">
+                            <input type="text" class="form-control"  name="nombre" id="nombre1" placeholder="Ingrese Nombres">
                           </div>
                         </div>
                         <div class="form-group">
                           <label  class="col-sm-2 control-label">Apellidos</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control"  name="apellidos" placeholder="Ingrese Apellidos">
+                            <input type="text" class="form-control"  name="apellidos" id="apellidos1"placeholder="Ingrese Apellidos">
                           </div>
                         </div>
                         <div class="form-group">
@@ -248,13 +249,13 @@
                         <div class="form-group">
                           <label  class="col-sm-2 control-label">Usuario</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" name="usuario" placeholder="Ingrese Usuario">
+                            <input type="text" class="form-control" name="usuario" id="usuario1"placeholder="Ingrese Usuario">
                           </div>
                         </div>
                         <div class="form-group">
                           <label  class="col-sm-2 control-label">Contraseña</label>
                           <div class="col-sm-10">
-                            <input type="password" class="form-control" name="pass" placeholder="Ingrese Contraseña">
+                            <input type="password" class="form-control" name="pass" id="pass1"placeholder="Ingrese Contraseña">
                           </div>
                         </div>
              
@@ -350,11 +351,11 @@ CKEDITOR.replace( 'editor1', {
 <script type="text/javascript">
     $(document).ready(function(){
         $('#agregarUser').click(function(){
-          nombre=$('#nombre').val();
-          apellidos=$('#apellidos').val();
-          email=$('#email').val();
-          usuario=$('#usuario').val();
-          pass=$('#pass').val();
+          nombre=$('#nombre1').val();
+          apellidos=$('#apellidos1').val();
+          email=$('#inputEmail3').val();
+          usuario=$('#usuario1').val();
+          pass=$('#pass1').val();
             agregardatos(nombre,apellidos,email,usuario,pass);
         });
 

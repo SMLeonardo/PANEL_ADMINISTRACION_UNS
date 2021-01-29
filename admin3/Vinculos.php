@@ -46,6 +46,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="index.html">Panel de Control</a></li>
+            <li><a href="Secciones.php">Secciones</a></li>
             <li><a href="Menus.php">Menus</a></li>
             <li><a href="Slider.php">Sliders</a></li>
             <li><a href="Noticias.php">Noticias</a></li>

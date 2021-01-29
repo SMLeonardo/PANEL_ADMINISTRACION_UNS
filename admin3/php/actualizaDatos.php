@@ -1,14 +1,14 @@
 <?php
-include("contolador/conexion.php");
+include("../contolador/conexion.php");
 $id=$_POST['ID'];
 	$nombre=$_POST['nombre'];
-	$apellido=$_POST['apellido'];
+	$apellido=$_POST['apellidos'];
 	$email=$_POST['email'];
 	$user=$_POST['usuario'];
 	$pass=$_POST['contraseña'];
 
 	$sql="UPDATE usuario set User_nombres='$nombre',
-								User_apellidos='$apellido',
+								User_apellidos='$apellidos',
 								User_email='$email',
 								User_usuario='$user',
 								User_password='$pass' 
