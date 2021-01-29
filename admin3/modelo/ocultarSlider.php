@@ -18,7 +18,7 @@ include("../contolador/conexion.php");
         where id_slider='$id'";
         $query=mysqli_query($conexion,$sql);
         if($query){
-        header('location:../Vinculos.php');
+        header('location:../Slider.php');
         
         }else{
         echo"Error";
